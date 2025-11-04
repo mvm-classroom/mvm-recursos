@@ -51,7 +51,7 @@
 Instal.lar, a la màquina `server`, el SGBD. En aquest cas: `PostgreSQL 18`. Podeu aprofitar, si voleu, la màquina de l'exercici anterior.
 
 ### 2. Càrrega de les dades
-Connectat al servidor i, fent servir el terminal, fes el necessari per carregar les dades de `dvdrental.tar`. Potser t'interessa fer una ullada a l'eina [`pg_restore`](https://www.postgresql.org/docs/current/app-pgrestore.html)
+Connectat al servidor i, fent servir el terminal, fes el necessari per carregar les dades de (`dvdrental.tar`)[https://github.com/mvm-classroom/mvm-recursos/raw/main/cicles/ASIX/ASGBD/Recursos/dvdrental.tar]. Potser t'interessa fer una ullada a l'eina [`pg_restore`](https://www.postgresql.org/docs/current/app-pgrestore.html)
 
 ## Segona part: Client (terminal)
 ### 1. Client local
