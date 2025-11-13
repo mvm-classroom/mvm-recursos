@@ -54,6 +54,19 @@ Eliminar la base de dades
 DROP DATABASE nom_base_de_dades;
 ```
 
+### Definició de taules
+
+Crear una taula definint alguns camps
+```sql
+CREATE TABLE clients (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,    
+    posicio_ranking INTEGER DEFAULT 0,
+    saldo DECIMAL DEFAULT 0,
+    actiu BOOLEAN DEFAULT true
+);
+```
+
 Renombrar la base de dades
 ```sql
 ALTER DATABASE nom_antic RENAME TO nom_nou;
