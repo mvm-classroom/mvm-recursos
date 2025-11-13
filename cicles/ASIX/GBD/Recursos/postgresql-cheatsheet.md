@@ -53,6 +53,10 @@ Eliminar la base de dades
 ```sql
 DROP DATABASE nom_base_de_dades;
 ```
+Renombrar la base de dades
+```sql
+ALTER DATABASE nom_antic RENAME TO nom_nou;
+```
 
 ### Definició de taules
 
@@ -65,9 +69,4 @@ CREATE TABLE clients (
     saldo DECIMAL DEFAULT 0,
     actiu BOOLEAN DEFAULT true
 );
-```
-
-Renombrar la base de dades
-```sql
-ALTER DATABASE nom_antic RENAME TO nom_nou;
 ```
