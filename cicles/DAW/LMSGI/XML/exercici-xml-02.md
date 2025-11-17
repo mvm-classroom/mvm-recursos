@@ -1,4 +1,4 @@
-# Exercicis XML 2: Namespaces
+# Exercici XML 2: Namespaces
 
 ## 0. Enunciat
 Som el proveïdor que dona servei a diferents clients del món de l’espectable i disposem d’una aplicació que n’enregistra els esdeveniments que volen programar perquè la gent els pugui consultar i comprar-ne les entrades.
