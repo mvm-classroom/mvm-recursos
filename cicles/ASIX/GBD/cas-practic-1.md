@@ -227,7 +227,7 @@ COMANDA }|--|| LINIA_COMANDA : "PK/FK: ID_Comanda"
 PRODUCTE }|--|| LINIA_COMANDA : "PK/FK: ID_Producte"
 ```
 
-## 3. Millora: El Procés de Normalització (`1NF`, `2NF`, `3NF`)
+## 3. Normalització (`1NF`, `2NF`, `3NF`)
 
 La normalització és un procés sistemàtic que s'aplica al Model Relacional (RM) per organitzar les dades de manera eficient.
 
@@ -431,69 +431,69 @@ Project DunderMifflin {
 }
 
 Table DEPARTAMENT {
-  ID_Dept string [pk, unique, note: 'Identificador únic del departament (ex: VEN, MAG)']
-  Nom string [not null]
+  Id int [pk, increment, note: 'Identificador únic (auto-incremental)']
+  Nom varchar [not null]
 }
 
 Table EMPLEAT {
-  ID_Empleat string [pk, unique, note: 'Identificador únic del empleat']
-  Nom string [not null]
-  Cognom string
-  ID_Dept string [not null, note: 'Enllaç al departament on treballa']
+  Id int [pk, increment, note: 'Identificador únic de l\'empleat']
+  Nom varchar [not null]
+  Cognom varchar
+  Id_Departament int [not null, note: 'Enllaç al departament on treballa']
   
   Note: 'Inclou tots els empleats, inclosos els venedors.'
 }
 
 Table CLIENT {
-  ID_Client string [pk, unique, note: 'Identificador únic del client']
-  NomEmpresa string [not null]
-  ID_Empleat_Venedor string [not null, note: 'El venedor (Empleat) assignat a aquest client']
+  Id int [pk, increment, note: 'Identificador únic del client']
+  NomEmpresa varchar [not null]
+  Id_Venedor int [not null, note: 'FK a l\'Empleat (Venedor) assignat']
 }
 
 Table COMANDA {
-  ID_Comanda string [pk, unique, note: 'Número de comanda únic']
+  Id int [pk, increment, note: 'Número de comanda únic']
   Data timestamp [not null, default: `now()`]
-  ID_Client string [not null, note: 'Client que ha realitzat la comanda']
+  Id_Client int [not null, note: 'FK al Client que fa la comanda']
 }
 
 Table PRODUCTE {
-  ID_Producte string [pk, unique, note: 'SKU o identificador de producte']
-  NomProducte string [not null]
+  Id int [pk, increment, note: 'Identificador intern de producte']
+  NomProducte varchar [not null]
   PreuUnitari decimal(10, 2) [not null, note: 'Preu per unitat']
 }
 
 Table LINIA_COMANDA {
-  // Aquesta és una taula associativa (N:M)
-  ID_Comanda string [pk, note: 'Part 1 de la clau composta']
-  ID_Producte string [pk, note: 'Part 2 de la clau composta']
+  // Taula associativa (N:M)
+  Id_Comanda int [pk, note: 'FK a Comanda']
+  Id_Producte int [pk, note: 'FK a Producte']
   Quantitat int [not null, default: 1]
 
   indexes {
-    (ID_Comanda, ID_Producte) [pk] // Defineix la Clau Primària Composta
+    (Id_Comanda, Id_Producte) [pk] // Clau Primària Composta
   }
   
   Note: 'Detall de productes i quantitats per a cada comanda'
 }
 
-// Definicions explícites de les relacions (Claus Foranes)
-// Aquesta és la manera correcta de definir les FK en DBML
+// --- RELACIONS (Claus Foranes) ---
 
 // Un Departament té molts Empleats (1:N)
-Ref: EMPLEAT.ID_Dept > DEPARTAMENT.ID_Dept
+Ref: EMPLEAT.Id_Departament > DEPARTAMENT.Id
 
 // Un Empleat (Venedor) té molts Clients (1:N)
-Ref: CLIENT.ID_Empleat_Venedor > EMPLEAT.ID_Empleat
+Ref: CLIENT.Id_Venedor > EMPLEAT.Id
 
 // Un Client fa moltes Comandes (1:N)
-Ref: COMANDA.ID_Client > CLIENT.ID_Client
+Ref: COMANDA.Id_Client > CLIENT.Id
 
-// Una Comanda té moltes Línies de Comanda (1:N, part de N:M)
-Ref: LINIA_COMANDA.ID_Comanda > COMANDA.ID_Comanda
+// Una Comanda té moltes Línies de Comanda (1:N)
+Ref: LINIA_COMANDA.Id_Comanda > COMANDA.Id
 
-// Un Producte està a moltes Línies de Comanda (1:N, part de N:M)
-Ref: LINIA_COMANDA.ID_Producte > PRODUCTE.ID_Producte
+// Un Producte està a moltes Línies de Comanda (1:N)
+Ref: LINIA_COMANDA.Id_Producte > PRODUCTE.Id
 ```
-
 Podem fer servir eines com [dbdiagram.io](https://dbdiagram.io)
 
 També podem fer servir, per exemple, extensions de VSCode com [DBML Entity-Relationship Diagrams visualizer](https://marketplace.visualstudio.com/items?itemName=bocovo.dbml-erd-visualizer)
+
+---
