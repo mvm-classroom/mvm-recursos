@@ -497,3 +497,129 @@ Podem fer servir eines com [dbdiagram.io](https://dbdiagram.io)
 També podem fer servir, per exemple, extensions de VSCode com [DBML Entity-Relationship Diagrams visualizer](https://marketplace.visualstudio.com/items?itemName=bocovo.dbml-erd-visualizer)
 
 ---
+
+## 5. Implementació de la base de dades
+Arribats a aquest punt ja estem preparats per materialitzar la nostra base de dades a un `SGBD` (Sistema Gestor de Bases de Dades) que, en aquest exemple, sera `PostgreSQL 18`.
+
+Connectant a PostgreSQL mitjançant el client de terminal `psql` ens trobarem en un escenari com aquest
+```sql
+postgres=#
+```
+Aquest _prompt_ ens indica que estem connectats a `psql`, concretament a la base de dades anomenada `postgres`
+A partir d'aquí, podem executar les comandes DDL que hem vist a clase com:
+
+### Creació de la nostra base de dades
+```sql
+CREATE DATABASE dunder_mifflin;
+```
+Un cop creada la base de dades, ens connectem a ella fent servir `\c dunder_mifflin` per que la feina que fem a continuació quedi enregistrada en la base de dades `dunder_mifflin`
+
+Ara veurem un _prompt_ com aquest
+```sql
+dunder_mifflin=#
+```
+indicant-nos que, efectivament, estem treballant sobre la base de dades que acabem de crear
+### Creació de les taules
+#### Taula `DEPARTAMENT`
+```sql
+CREATE TABLE DEPARTAMENT (
+    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL    
+);
+
+COMMENT ON TABLE DEPARTAMENT IS 'Taula per enregistrar els DEPARTAMENTS';
+```
+#### Taula `EMPLEAT`
+```sql
+CREATE TABLE EMPLEAT(
+    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    cognom VARCHAR(50) NOT NULL,
+    departament_id INTEGER NOT NULL
+);
+
+COMMENT ON TABLE EMPLEAT IS 'Inclou tots els empleats, inclosos els venedors.';
+COMMENT ON COLUMN EMPLEAT.departament_id IS 'Identificador del departament associat (taula DEPARTAMENT)';
+```
+
+#### Taula `CLIENT`
+```sql
+CREATE TABLE CLIENT (
+    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nom_empresa VARCHAR(200) NOT NULL,
+    empleat_venedor_id INTEGER NOT NULL
+);
+
+COMMENT ON TABLE CLIENT IS 'Taula per enregistrar els CLIENTS';
+COMMENT ON COLUMN CLIENT.empleat_venedor_id IS 'El venedor (EMPLEAT) assignat a aquest client';
+```
+
+#### Taula `COMANDA`
+```sql
+CREATE TABLE COMANDA (
+  Id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  Data timestamp NOT NULL DEFAULT (now()),
+  Id_Client integer NOT NULL
+);
+
+COMMENT ON TABLE COMANDA IS 'Taula per enregistrar les COMANDES';
+COMMENT ON COLUMN COMANDA.Id_Client IS 'FK al CLIENT que fa la COMANDA';
+```
+
+#### Taula `PRODUCTE`
+```sql
+CREATE TABLE PRODUCTE (
+  Id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  NomProducte varchar(255) NOT NULL,
+  PreuUnitari decimal(10, 2) NOT NULL
+);
+
+COMMENT ON TABLE PRODUCTE IS 'Taula per enregistrar els PRODUCTES';
+```
+
+#### Taula `LINIA_COMANDA`
+```sql
+CREATE TABLE LINIA_COMANDA (
+  Id_Comanda integer NOT NULL,
+  Id_Producte integer NOT NULL,
+  Quantitat integer NOT NULL DEFAULT 1,
+  PRIMARY KEY (Id_Comanda, Id_Producte)
+);
+
+COMMENT ON TABLE LINIA_COMANDA IS 'Taula el detall de les COMANDES';
+COMMENT ON COLUMN LINIA_COMANDA.Id_Comanda IS 'FK a Comanda';
+COMMENT ON COLUMN LINIA_COMANDA.Id_Producte IS 'FK a Producte';
+```
+
+### Establir referències necessàries entre les taules
+
+#### Referència de la taula `EMPLEAT` cap a `DEPARTAMENT`
+Afegim una **clau forana** per establir una relació entre la taula `EMPLEAT` i la taula `DEPARTAMENT`. En aquest cas, la relació la fem entre el camp `Id_Departament` de la taula `EMPLEAT` y el camp `Id` de la taula `DEPARTAMENT`.
+```sql
+ALTER TABLE EMPLEAT ADD FOREIGN KEY (Id_Departament) REFERENCES DEPARTAMENT (Id);
+```
+
+#### Referència de la taula `CLIENT` cap a `EMPLEAT`
+Afegim una **clau forana** per establir una relació entre la taula `CLIENT` i la taula `EMPLEAT`. En aquest cas, la relació la fem entre el camp `Id_Venedor` de la taula `CLIENT` y el camp `Id` de la taula `EMPLEAT`.
+```sql
+ALTER TABLE CLIENT ADD FOREIGN KEY (Id_Venedor) REFERENCES EMPLEAT (Id);
+```
+
+#### Referència de la taula `COMANDA` cap a `CLIENT`
+Afegim una **clau forana** per establir una relació entre la taula `COMANDA` i la taula `CLIENT`. En aquest cas, la relació la fem entre el camp `Id_Client` de la taula `COMANDA` y el camp `Id` de la taula `CLIENT`.
+```sql
+ALTER TABLE COMANDA ADD FOREIGN KEY (Id_Client) REFERENCES CLIENT (Id);
+```
+
+#### Referències de la taula `LINIA_COMANDA`
+Per la taula `LINIA_COMANDA` tenim dos **claus foranes**:
+
+La relació entre la `LINIA_COMANDA` i la `COMANDA` 
+```sql
+ALTER TABLE LINIA_COMANDA ADD FOREIGN KEY (Id_Comanda) REFERENCES COMANDA (Id);
+```
+
+La relació entre la `LINIA_COMANDA` i el `PRODUCTE`
+```sql
+ALTER TABLE LINIA_COMANDA ADD FOREIGN KEY (Id_Producte) REFERENCES PRODUCTE (Id);
+```
