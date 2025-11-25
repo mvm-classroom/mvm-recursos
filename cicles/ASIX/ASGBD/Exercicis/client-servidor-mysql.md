@@ -34,10 +34,10 @@ Per exemple [aquesta](https://dev.mysql.com/doc/employee/en/)
 Intentar accedir localment amb l'eina client de terminal i comprovar que podem accedir i treballar amb la base de dades de prova.
 
 
-## Tercera part: Client (MySQL Workbench)
+## Tercera part: Client remot (MySQL Workbench)
 
 ### 1. Instal·lació de MySQL Workbench
-A la màquina servidora, instal·la la versió més nova de MySQL Workbench o una eina client amb GUI similar.
+A la màquina client, instal·la la versió més nova de MySQL Workbench o una eina client amb GUI similar.
 
 ### 2. Client remot (MySQL Workbench)
 Fes servir MySQL Workbench per accedir a la instància remota de MySQL al servidor i fer consultes a qualsevol de les taules de la base de dades de prova.
