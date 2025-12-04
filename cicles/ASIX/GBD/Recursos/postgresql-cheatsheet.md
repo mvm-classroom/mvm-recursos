@@ -106,6 +106,15 @@ El podem entendre com: ***Fes servir una seqüència interna complint l'estànda
 | **Recomanació (PostgreSQL 10+)** | 📉 **Obsolet.** Es manté per compatibilitat amb codi antic. | 📈 **Recomanat.** És la manera correcta de treballar avui dia. |
 
 ## DDL - *Data Definition Language*
+Es un llenguatge que, fent servir certes sentències SQL, ens permet **definir** l'estructura de les dades. Dit d'una altra manera, son les instruccions que farem servir per construir l'estructura de la nostra base de dades.
+
+Consta de 4 ordres:
+- `CREATE`: Ens permet crear parts de l'estructura tals com la propia **base de dades**, **taules**, **vistes**...
+- `ALTER`: Ens permet alterar o modificar l'estructura, com per exemple, **afegir columnes** a una taula o **canviar el tipus de dada d'una columna**
+- `DROP`: Ens permet eliminar una part de l'estructura. Podem eliminar una **columna**, una **taula** o **tota la base de dades** si cal
+- `TRUNCATE`: Ens permet eliminar tot el contingut de la taula pero mantenint l'estructura
+    >[!NOTE]
+    >El que fa realment `TRUNCATE` es eliminar la taula (`DROP`) i tornar-la a crear (`CREATE`) tot en una i sense que ho haguem de fer nosaltres explícitament. Es per aixó que aquesta operació la classifiquem com `DDL` i no com `DML`. Sempre que volguem esborrar **TOTS** els registres de la taula, es una opció més recomanable a efectes de rendiment que fer un `DELETE FROM nom_taula`.
 
 ### Definició de la propia base de dades
 #### Crear la base de dades
@@ -149,7 +158,7 @@ CREATE TABLE usuaris (
     id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE,
-    dept_id INTEGER REFERENCES usuaris(id)
+    dept_id INTEGER REFERENCES usuaris(id) --dept_id es una clau forana que apunta a la clau primaria d'usuaris (id)
 );
 ```
 
@@ -197,3 +206,28 @@ ALTER TABLE "CLIENT" ALTER COLUMN "Id"
 ADD GENERATED ALWAYS AS IDENTITY;
 ```
 Com encara no tenim valors, potser eliminareu la taula i la tornareu a crear. Pero tingueu en compte que a un model amb dades existents no podriem esborrar la taula i també hauriem de gestionar que el comptador de la seqüència no perdi el valor actual.
+
+
+## DML - Data Manipulation Language
+Es un llenguatge que, fent servir certes sentències SQL, ens permet manipular les dades. Dit d'una altra manera, son les instruccions que farem servir per afegir i modificar contingut a la base de dades que hem definit prèviament. Ens permet realitzar les operacions **CRUD** (Create, Read, Update, Delete) fent servir les següents sentències:
+
+### `INSERT`
+Les sentències `INSERT` son les que ens permeten **inserir** o afegir informació a la nostra base de dades en forma de **registres** a les taules. Podem entendre cada registre com una fila de la taula.
+
+Per exemple, si volem inserir un registre a la taula usuaris que hem creat als exemples previs:
+
+```sql
+INSERT INTO usuaris (nom, email, detp_id)
+VALUES ('Gregorio Esteban Sánchez Fernández', 'dongregorio@gmail.com', 2);
+```
+
+>[!NOTE]
+>No hem d'informar tots els camps de la taula a l'insert, només els que volguem (o els que no ens quedi més remei perque no admeten NULLS).
+>
+>En aquest cas no he informat el camp `id` ja que es un `IDENTITY` que, a més, es `GENERATED ALWAYS`, de manera que si l'intento informar jo manualment ens tirarà un error.
+
+### `UPDATE`
+
+### `SELECT`
+
+### `DELETE`
