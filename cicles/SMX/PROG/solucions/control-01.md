@@ -1,5 +1,35 @@
 # Solucions control de programació amb Python
 
+## Exercici 1
+Escriu una funció que rebi dos nombres decimals i retorni el màxim dels dos.
+Escriu una funció que calculi l'àrea d'un triangle. 
+Completa el programa per que calculi l'àrea d'un triangle de base 4 i altura 8, i l'àrea d'un triangle de base 6 i altura 6. El programa ha d'usar les funcions definides però no fa falta demanar les dades interactivament a l'usuari, ja que els valors seran sempre els mateixos.
+
+>[!NOTE]
+>L'àrea d'un triangle partint de la seva base (`b`) i altura (`h`) es calcula com
+`a = (b * h) / 2`
+
+### Funció per calcular el màxim de dos nº
+```python
+def max_de_2(num1,num2):
+    if num1 > num2:
+        return num1
+    else
+        return num2
+```
+### Funció per calcular l'àrea d'un triangle
+```python
+def area_triangle(num1, num2):
+    return (num1 * num2) / 2
+```
+### Programa que fa servir les funcions definides
+```python
+area1 = area_triangle(4, 8)
+area2 = area_triangle(6, 6)
+maxim = max_de_2(area1, area2)
+print (“L’àrea màxima es”,maxim)
+```
+
 ## Exercici 4
 
 ```python
