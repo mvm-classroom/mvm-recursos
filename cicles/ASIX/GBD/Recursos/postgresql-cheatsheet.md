@@ -256,8 +256,27 @@ VALUES ('Gregorio Esteban Sánchez Fernández', 'dongregorio@gmail.com', 2);
 >
 >En aquest cas no he informat el camp `id` ja que es un `IDENTITY` que, a més, es `GENERATED ALWAYS`, de manera que si l'intento informar jo manualment ens tirarà un error.
 
-### `UPDATE`
-
 ### `SELECT`
+Les sentències `SELECT` son les que ens permeten consultar o seleccionar l'informació existent a la nostra base de dades.
+
+Un exemple molt senzill seria consultar tot el contingut de la taula d'usuaris:
+```sql
+SELECT * FROM usuaris;
+```
+Si analitzem l'estructura de la sentència, li estem dient al nostre SGBD:
+ - `SELECT`: Vull seleccionar o llistar registres
+ - `*`: Voldré veure totes les columnes del registre
+ - `FROM usuaris`: De la taula anomenada `usuaris`
+
+Si només vull mostrar algunes columnes de la taula faria servir:
+```sql
+SELECT nom, email FROM usuaris;
+```
+Si analitzem l'estructura de la sentència, li estem dient al nostre SGBD:
+ - `SELECT`: Vull seleccionar o llistar registres
+ - `nom, email`: Voldré veure les columnes anomenades `nom` i `email`
+ - `FROM usuaris`: De la taula anomenada `usuaris`
+
+### `UPDATE`
 
 ### `DELETE`
