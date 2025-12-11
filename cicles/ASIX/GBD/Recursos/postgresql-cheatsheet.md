@@ -35,6 +35,36 @@ psql -h ip.de.equip.servidor -U postgres
 |`\?`|Ajuda de comandes `psql`|
 |`\q` o `exit`|Sortir de `psql`|
 
+## Exemple de càrrega de les dades
+Connectat al servidor i, fent servir el terminal, fes el necessari per carregar les dades de [`dvdrental.tar`](https://github.com/mvm-classroom/mvm-recursos/raw/main/cicles/ASIX/ASGBD/Recursos/dvdrental.tar). Potser t'interessa fer una ullada a l'eina [`pg_restore`](https://www.postgresql.org/docs/current/app-pgrestore.html)
+
+### Abans de res, hauriem de crear la base de dades.
+Connectem al SGBD com l'usuari `postgres`
+```shell
+psql -h localhost -U postgres
+```
+i un cop a dins, creem la base de dades
+```sql
+CREATE DATABASE dvdrental OWNER postgres;
+```
+### Descarregar el fitxer amb la base de dades
+Podem descarregar el fitxer `dvdrental.tar` fent
+
+```shell
+wget https://github.com/mvm-classroom/mvm-recursos/raw/main/cicles/ASIX/ASGBD/Recursos/dvdrental.tar
+```
+### Revisar i importar el fitxer amb la base de dades
+Per tafanejar el fitxer `dvdrental.tar` abans d'importarlo a cegues
+```shell
+pg_restore --list dvdrental.tar
+```
+
+Un exemple de com restaurar el fitxer `dvdrental.tar` a la base de dades `dvdrental` que hem creat prèviament
+
+```shell
+pg_restore -h localhost -U postgres -d dvdrental dvdrental.tar
+```
+
 ## Tipus de dades
 Podeu consultar, de manera molt més extensa i detallada, tota la documentació sobre tipus de dades [a aquest capítol de la documentació de PostreSQL 18.](https://www.postgresql.org/docs/current/datatype.html)
 
