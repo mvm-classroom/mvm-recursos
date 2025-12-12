@@ -339,8 +339,38 @@ SELECT * FROM usuaris WHERE dept_id in (4,5,6);
 SELECT * FROM usuaris WHERE nom='Mario' or nom='Luigi';
 ```
 
+#### `COUNT`, `SUM`, `AVG`
 
-#### `COUNT`
+Podem contar els registres d'una taula
+
+```sql
+SELECT COUNT(*) FROM usuaris;
+```
+
+Sumar el valor de tots els registres trobats
+```sql
+SELECT SUM(import) FROM comandes WHERE any_fiscal=2025;
+```
+
+Treure la mitga dels valors trobats
+```sql
+SELECT AVG(durada) FROM pelicules WHERE idioma=3;
+```
+
+#### `ORDER BY`
+Podem indicar l'ordre en el que volem que es mostrin els registres
+
+```sql
+SELECT * FROM usuaris ORDER BY nom;
+```
+
+#### `LIMIT`
+També podem limitar els resultats de la cerca
+```sql
+SELECT * FROM usuaris LIMIT 5;
+```
+
+
 
 ### `UPDATE`
 
