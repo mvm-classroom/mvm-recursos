@@ -65,6 +65,40 @@ Un exemple de com restaurar el fitxer `dvdrental.tar` a la base de dades `dvdren
 pg_restore -h localhost -U postgres -d dvdrental dvdrental.tar
 ```
 
+## Restaurar base de dades de prova `pagila`
+En aquest cas farem servir la base de dades de prova anomenada `pagila` que podem trobar [aquí](https://github.com/devrimgunduz/pagila)
+
+Podem descarregar tot el repositori fent servir
+```shell
+git clone https://github.com/devrimgunduz/pagila.git
+```
+i accedim al directori que ens ha creat
+```shell
+cd pagila
+```
+Abans de restaurar el contingut, hem de crear la base de dades al nostre SGBD
+```shell
+isard@ubuntu-server:~$ psql -h localhost -U postgres
+Contraseña para usuario postgres:
+psql (18.0 (Ubuntu 18.0-1.pgdg24.04+3))
+Conexión SSL (protocolo: TLSv1.3, cifrado: TLS_AES_256_GCM_SHA384, compresión: desactivado, ALPN: postgresql)
+Digite «help» para obtener ayuda.
+
+postgres=# CREATE DATABASE pagila;
+CREATE DATABASE
+postgres=# exit
+```
+Farem servir l'opció `-f` de `psql` per restaurar un parell de fitxers del repositori descarregat:
+
+```shell
+psql -h localhost -U postgres -d pagila -f pagila-schema.sql
+```
+```shell
+psql -h localhost -U postgres -d pagila -f pagila-insert-data.sql
+```
+Un cop finalitzat el procés podem connectar via `psql` i comprovar que la base de dades `pagila` conté certa estructura i dades.
+
+
 ## Tipus de dades
 Podeu consultar, de manera molt més extensa i detallada, tota la documentació sobre tipus de dades [a aquest capítol de la documentació de PostreSQL 18.](https://www.postgresql.org/docs/current/datatype.html)
 
@@ -276,6 +310,37 @@ Si analitzem l'estructura de la sentència, li estem dient al nostre SGBD:
  - `SELECT`: Vull seleccionar o llistar registres
  - `nom, email`: Voldré veure les columnes anomenades `nom` i `email`
  - `FROM usuaris`: De la taula anomenada `usuaris`
+
+#### `WHERE`
+No sempre (de fet gairebé mai) voldrem veure **TOTS** els registres d'una taula, per aixó fem servir els filtres.
+Si volem aplicar filtres sobre els registres que consultem amb una sentència `SELECT` farem servir el modificador `WHERE`.
+
+Per exemple:
+```sql
+SELECT * FROM usuaris WHERE nom='Mario';
+```
+Si analitzem l'estructura de la sentència, li estem dient al nostre SGBD:
+ - `SELECT`: Vull seleccionar o llistar registres
+ - `*`: Voldré totes les columnes del registre
+ - `FROM usuaris`: De la taula anomenada `usuaris`
+ - `WHERE`: Quan es donin les següents condicions
+ - `nom='Mario'`: La condició es que el nom de l'usuari sigui, exactament, `Mario`
+
+Podem filtrar per més d'una columna
+```sql
+SELECT * FROM usuaris WHERE nom='Mario' AND dept_id=4;
+```
+
+Podem filtrar per més d'un valor a la mateixa columna
+```sql
+SELECT * FROM usuaris WHERE dept_id in (4,5,6);
+```
+```sql
+SELECT * FROM usuaris WHERE nom='Mario' or nom='Luigi';
+```
+
+
+#### `COUNT`
 
 ### `UPDATE`
 
