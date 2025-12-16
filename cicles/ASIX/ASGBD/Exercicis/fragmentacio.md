@@ -33,7 +33,7 @@ Modifica la informació de les bases de dades de la següent manera:
 
 - Servidor `current`: esborra tota la informació de la taula `payment` que tingui una data de pagament **anterior** al `2007-05-01`.
 - Servidor `history`: esborra tota la informació de la taula `payment` que tingui una data de pagament **igual o superior** al `2007-05-01`.
-- Servidor `current`: esborra taula `payment` sencera (contingut i estructura)
+- Servidor `gateway`: esborra taula `payment` sencera (contingut i estructura)
 
 ## 3. Importació de taules foranes
 
