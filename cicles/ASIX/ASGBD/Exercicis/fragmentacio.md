@@ -35,6 +35,57 @@ Modifica la informació de les bases de dades de la següent manera:
 - Servidor `history`: esborra tota la informació de la taula `payment` que tingui una data de pagament **igual o superior** al `2007-05-01`.
 - Servidor `gateway`: esborra taula `payment` sencera (contingut i estructura)
 
+>[!TIP]
+>També podeu fer servir 3 contenidors a una mateixa màquina
+>Us deixo aqui un plantilla de `docker-compose.yml` per si us resulta d'utilitat:
+>
+>```yaml
+>services:
+>  # --- Contenedor 1: CURRENT ---
+>  current:
+>    image: postgres:17
+>    container_name: current
+>    restart: always
+>    environment:
+>      POSTGRES_USER: admin_current
+>      POSTGRES_PASSWORD: password_current
+>      POSTGRES_DB: db_current
+>    ports:
+>      - "5432:5432"  # Puerto Host 5432 -> Contenedor 5432
+>    volumes:
+>      - ./data/current:/var/lib/postgresql/data
+>
+>  # --- Contenedor 2: HISTORY ---
+>  history:
+>    image: postgres:17
+>    container_name: history
+>    restart: always
+>    environment:
+>      POSTGRES_USER: admin_history
+>      POSTGRES_PASSWORD: password_history
+>      POSTGRES_DB: db_history
+>    ports:
+>      - "5433:5432"  # Puerto Host 5433 -> Contenedor 5432
+>    volumes:
+>      - ./data/history:/var/lib/postgresql/data
+>
+>  # --- Contenedor 3: GATEWAY ---
+>  gateway:
+>    image: postgres:17
+>    container_name: gateway
+>    restart: always
+>    environment:
+>      POSTGRES_USER: admin_gateway
+>      POSTGRES_PASSWORD: password_gateway
+>      POSTGRES_DB: db_gateway
+>    ports:
+>      - "5434:5432"  # Puerto Host 5434 -> Contenedor 5432
+>    volumes:
+>      - ./data/gateway:/var/lib/postgresql/data
+>```
+
+
+
 ## 3. Importació de taules foranes
 
 Al servidor `gateway` importar les següents taules:
