@@ -48,6 +48,23 @@ def process_directory(input_dir, extension='jpg'):
             rutaDestino = os.path.join(output_dir, output_filename)
             procesarImagen(rutaOrigen, rutaDestino)
 ```
+```xml
+<esdeveniments>
+	<esdeveniment>
+		<companyia>Ultrashow</companyia>
+		<lloc>Teatre Goya</lloc>
+		<data>2025-11-14 23:00</data>
+		<entrada>15€ + 2,5€ de gestión online</entrada>
+	</esdeveniment>
+	<esdeveniment>
+		<companyia>Els Malvats</companyia>
+		<lloc>Teatre Gaudí</lloc>
+		<data>2025-11-29 20:00</data>
+		<entrada>22€</entrada>
+	</esdeveniment>	
+</esdeveniments>
+```
+
 > [!Note] 
 > ### Podem definir una secció de notes
 > - nota 1
@@ -80,6 +97,9 @@ def process_directory(input_dir, extension='jpg'):
 > Catàstrofe imminent, perill assegurat, error garantit, apocalipsi
 
 ## Altres tipus de contingut que podem afegir
+
+### Una imatge
+![Logo de l'Institut Manuel Vázquez Montalbán](img/logo-mvm.png)
 
 ### Una checklist
 - [ ] Element de la checklist desmarcat
