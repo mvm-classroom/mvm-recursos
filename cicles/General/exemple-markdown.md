@@ -99,7 +99,7 @@ def process_directory(input_dir, extension='jpg'):
 ## Altres tipus de contingut que podem afegir
 
 ### Una imatge
-![Logo de l'Institut Manuel Vázquez Montalbán](img/logo-mvm.png)
+![Logo de l'Institut Manuel Vázquez Montalbán](logo-mvm.png)
 
 ### Una checklist
 - [ ] Element de la checklist desmarcat
