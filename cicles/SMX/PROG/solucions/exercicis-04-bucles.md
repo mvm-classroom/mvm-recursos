@@ -17,8 +17,20 @@ Quants segons vols que duri el compte enrere?: 5
 1
 JA!
 ```
+### Solució amb `for`
+```python
+import time
 
-### Solució
+numero = int(input("Quants segons vols que duri el compte enrere?: "))
+
+for i in range(numero, 0, -1):
+    print(i)
+    time.sleep(1)  # Espera 1 segon
+
+print("¡JA!")
+```
+
+### Solució amb `while`
 
 ```python
 import time
@@ -34,7 +46,7 @@ print("¡JA!")
 ```
 
 
-## Exercici 2: Endevina el nº
+## Exercici 2: Endevina el nº secret
 
 Crea un joc per endevinar un nº aleatori que canviarà en cada execució.
 
