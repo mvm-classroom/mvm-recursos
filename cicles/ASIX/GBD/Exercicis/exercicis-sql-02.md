@@ -158,7 +158,7 @@ Mostra el nom del client i l'ID de la botiga (`store_id`) a la qual està assign
 
 ##### *Versió 1*: Mostra només la relació del client amb la botiga
 
-##### *Versió 2*: Mostra client, botiga i adreça*
+##### *Versió 2*: Mostra client, botiga i adreça
 
 ##### *Versió 3*: Mostra client, botiga, adreça del client i adreça de la botiga
 
