@@ -156,9 +156,11 @@ Mostra l'ID del lloguer (`rental_id`) i el nom de l'empleat (`staff`) que va pro
 #### 10. **Clients i Botigues:** 
 Mostra el nom del client i l'ID de la botiga (`store_id`) a la qual està assignat, però assegura't de mostrar l'adreça de la botiga (necessitaràs unir `customer` i `store`, i després `store` i `address`).
 
->*Versió 1: Mostra només la relació del client amb la botiga*
+##### *Versió 1*: Mostra només la relació del client amb la botiga
 
->*Versió 1: Mostra client, botiga i adreça*
+##### *Versió 2*: Mostra client, botiga i adreça*
+
+##### *Versió 3*: Mostra client, botiga, adreça del client i adreça de la botiga
 
 ### Nivell 2: Camins de 3 taules o taules intermèdies
 > [!NOTE]
