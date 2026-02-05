@@ -200,3 +200,36 @@ Mostra la data del pagament, l'import, el nom del client i el nom de l'empleat q
 
 #### 20. **Informació completa de la Botiga:** 
 Mostra l'ID de la botiga, la ciutat on està i el país.
+
+## Nivell 4: `LEFT JOIN` i `RIGHT JOIN`
+
+#### 21. **Totes les películes i si son a l'inventari (LEFT JOIN)**
+Volem una llista de **totes** les pel·lícules i, si en tenim còpies, el seu ID d'inventari. Si no en tenim, volem que surti la pel·lícula igualment amb un NULL.
+
+#### 22. **Tots els idiomes i les seves pel·lícules (RIGHT JOIN).**
+Volem llistar **tots** els idiomes disponibles a la base de dades i el títol de les pel·lícules associades. Fes servir `RIGHT JOIN` amb la taula d'idiomes a la dreta. Si per un idioma no hi han pel.lícules, s'ha de mostrar l'idioma i un NULL
+
+#### 23. **Actors i les seves pel·lícules (LEFT JOIN).**
+Llista tots els actors i l'ID de les pel·lícules que han fet. Encara que a Pagila tots els actors han treballat, aquesta consulta és la manera correcta de verificar si tenim algun actor "a l'atur".
+
+#### 24. **Inventari i Lloguers (LEFT JOIN).**
+Mostra tot l'inventari (cintes físiques) i l'ID del lloguer si està llogada. Volem veure totes les cintes, fins i tot les que mai s'han llogat (o l'historial de lloguer).
+
+#### 25. **Comparativa: Pel·lícules sense inventari (RIGHT JOIN).**
+Repeteix l'exercici 1 (pel·lícules i inventari) però utilitzant `RIGHT JOIN`. Posa `inventory` a l'esquerra i `film` a la dreta.
+
+#### 26. **Troba les pel·lícules que NO tenim a l'inventari.**
+Utilitza un `LEFT JOIN` i filtra amb `WHERE` per mostrar només els títols que tenen l'ID d'inventari a NULL.
+
+#### 27. **Compta quantes pel·lícules ens falten a l'inventari.**
+En lloc de llistar els títols, volem saber la xifra total de pel·lícules que consten a la base de dades però no tenim físicament.
+
+#### 28. **Troba idiomes sense pel·lícules (RIGHT JOIN + WHERE).**
+Mostra els noms dels idiomes que no tenen cap pel·lícula associada a la base de dades.
+
+#### 29. **Suma del cost de reemplaçament de les pel·lícules "perdudes".**
+Volem saber quants diners representaria (segons `replacement_cost`) si haguéssim de comprar una còpia de totes les pel·lícules que actualment no tenim a l'inventari.
+
+#### 30. **Llistar pel·lícules 'G' que NO estan a l'inventari (Filtre compost).**
+Volem títols de pel·lícules que siguin aptes per a tots els públics (`rating` = 'G') **I** que, a més a més, no tinguem a l'inventari.
+
