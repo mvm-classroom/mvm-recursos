@@ -4,7 +4,12 @@
 
 Per aquests exercicis farem servir l'eina `BaseX`, que ens permet treballar amb bases de dades `XML`.
 
-Instala `BaseX` a qualsevol màquina virtual (ja sigui a `VirtualBox` o a `IsardVDI`)
+Instal.la `BaseX` a qualsevol màquina virtual (ja sigui a `VirtualBox` o a `IsardVDI`)
+
+Com soleu treballar amb Ubuntu, ho podeu instal.lar de la següent manera:
+```shell
+sudo apt install basex -y
+```
 
 Un cop oberta l'eina, hauràs de crear una nova base de dades i carregar el fitxer [mondial_geo_accidents.xml](../recursos/mondial_geo_accidents.xml)
 
