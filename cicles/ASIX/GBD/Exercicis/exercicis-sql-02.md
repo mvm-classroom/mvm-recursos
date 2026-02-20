@@ -201,7 +201,7 @@ Mostra la data del pagament, l'import, el nom del client i el nom de l'empleat q
 #### 20. **Informació completa de la Botiga:** 
 Mostra l'ID de la botiga, la ciutat on està i el país.
 
-## Nivell 4: `LEFT JOIN` i `RIGHT JOIN`
+### Nivell 4: `LEFT JOIN` i `RIGHT JOIN`
 
 #### 21. **Totes les películes i si son a l'inventari (LEFT JOIN)**
 Volem una llista de **totes** les pel·lícules i, si en tenim còpies, el seu ID d'inventari. Si no en tenim, volem que surti la pel·lícula igualment amb un NULL.
@@ -233,3 +233,19 @@ Volem saber quants diners representaria (segons `replacement_cost`) si haguéssi
 #### 30. **Llistar pel·lícules 'G' que NO estan a l'inventari (Filtre compost).**
 Volem títols de pel·lícules que siguin aptes per a tots els públics (`rating` = 'G') **I** que, a més a més, no tinguem a l'inventari.
 
+### Nivell 5: Expressions
+
+#### 31. **Expressió de cadena: Llistar el nom complet dels actors en una unica columna**
+
+Volem el nom complet dels actors (`first_name` i `last_name`) en una unica columna que es digui "Nom actor"
+
+#### 32. **Expressió aritmética: Llistar la duració de les películes en hores**
+
+Volem mostrar la duració de les películes en hores en comptes de en minuts. El resultat ha de mostrar-se amb una precissió de 2 decimals i la columna s'ha de dir "Hores duració"
+
+#### 33. **Expressió condicional: Etiquetes de preu**
+
+Volem mostrar una nova columna, anomenada "Etiqueta preu", que ens mostri:
+- Si el lloguer es inferior a 1.00$: `Ofertón`
+- Si el lloguer està entre 1.00$ i 3.00$: `Preu amic`
+- Si el lloguer es superior a 3.00$: `Premium`
