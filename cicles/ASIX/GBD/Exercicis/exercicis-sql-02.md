@@ -249,3 +249,11 @@ Volem mostrar una nova columna, anomenada "Etiqueta preu", que ens mostri:
 - Si el lloguer es inferior a 1.00$: `Ofertón`
 - Si el lloguer està entre 1.00$ i 3.00$: `Preu amic`
 - Si el lloguer es superior a 3.00$: `Premium`
+
+### Nivell 6: Subconsultes
+
+#### 34. **Películes més cares de reemplaçar que la mitja**
+Volem trobar la llista de películes que son més cares de reemplaçar que la mitja.
+
+#### 35. **Actors d'un film en concret sense fer servir JOIN**
+Volem llistar el nom de tots els actors que van actuar a ACADEMY DINOSAUR pero sense fer servir joins.
