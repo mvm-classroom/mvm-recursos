@@ -176,6 +176,13 @@ Ja que hem invertit temps en investigar tot aixó, farem el següent:
 - Personalitzar els fitxers perque no facin servir passwords genérics
 - Crear un repositori amb els nostres fitxers
 - Crear un readme.md explicant tot el procés i les proves
+ 
+
+>[!TIP]
+>Per treballar amb `docker` i `docker compose` podeu instal.lar
+>```shell
+>sudo apt install docker.io docker-compose-v2 -y
+>```
 
 >[!TIP]
 >Per arrencar tots els contenidors orquestrats per `docker compose` ho podeu fer amb
@@ -189,8 +196,10 @@ Ja que hem invertit temps en investigar tot aixó, farem el següent:
 >si heu de repetir algun pas i voleu forçar a que es torni a generar la imatge a partir del `Dockerfile`
 
 >[!TIP]
->Per treballar amb `docker` i `docker compose` podeu instal.lar
+>Proveu aixó i investigueu què vol dir
 >```shell
->sudo apt install docker.io docker-compose-v2 -y
+>docker exec -it pg-1 patronictl -c /patroni.yml list
 >```
+>
+>També podeu provar d'accedir a `http://ip-de-la-maquina-amfitriona:7000`
 
