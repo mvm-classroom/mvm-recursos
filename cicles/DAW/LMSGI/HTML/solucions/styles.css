@@ -1,0 +1,84 @@
+/* Solució a l'exercici exercici-css-01 */
+/* Configuració general i fons */
+body {
+    background-color: #0b0d17; /* Compte que no es negre, es un blau molt fosc */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+/* Disseny de la tarja */
+.card {
+    background-color: #161b22;
+    width: 300px;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid #30363d;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Estils de la imatge */
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Si arrodonim les cantonades al 50% ens queda un cercle */
+    object-fit: cover;
+    border: 3px solid #58a6ff;
+    margin-bottom: 15px;
+}
+
+/* Diverses tipografies i colors de text */
+.name {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #58a6ff;
+}
+
+.role {
+    font-style: italic;
+    color: #8b949e;
+    margin-bottom: 20px;
+}
+
+.bio {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #c9d1d9;
+}
+
+/* Secció stats */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding-top: 15px;
+    border-top: 1px solid #30363d;
+}
+
+.stat-item {
+    font-size: 13px;
+}
+
+/* Botó amb efecte hover */
+.btn-contact {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #238636; 
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Amb aixó suavitzem l'animació */
+}
+
+/* Petits canvis d'estil al passar el ratolí per sobre (hover) */
+.btn-contact:hover {
+    background-color: #2ea043;
+    transform: scale(1.1); /* Efecte d'augmentar de mida */
+    box-shadow: 0 0 15px #2ea043;
+}
