@@ -72,3 +72,5 @@ ens donarà una sortida semblant a
 ```
 
 Si tot s'aixecat correctament, podem provar d'accedir a `http://localhost:8069`
+
+Si vols crear una nova base de dades, elminar l'actual o escollir entre les que tinguis, pots fer servir l'enllaç `http://10.2.85.135:8069/web/database/selector`
