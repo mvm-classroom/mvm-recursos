@@ -89,4 +89,4 @@ Heu de deixar al repositori habilitat, el següent:
 - Informe d'inventari
 - Captures de les diferents vistes (pivot, gràfica) de les reparacions
 - Document de tot el procés d'instalació, configuració i proves en .md
-- Video explicatiu on defenseu tota la pràctica (podeu fer servir qualsevol eïna de captura com `OBS`). Al video s'ha de mostrar una presentació amb el més important de tota la feina que heu fet. No cal que surtiu vosaltre, però heu de fer servir la vostra veu.
+- Video explicatiu (4-6 minuts) on defenseu tota la pràctica (podeu fer servir qualsevol eïna de captura com `OBS`). Al video s'ha de mostrar una presentació amb el més important de tota la feina que heu fet. No cal que surtiu vosaltre, però heu de fer servir la vostra veu.
