@@ -36,7 +36,7 @@ Per poder reparar un equip, aquest ha d'estar identificat de forma única al sis
     * Tipus: **Goods** (Producte Emmagatzemable).
     * Traçabilitat (Pestanya Inventory): **By Unique Serial Number**.
 2.  **Càrrega dels 60 Equips:**
-    * Importeu el fitxer CSV proporcionat que conté els 60 números de sèrie (`DAW-01` a `DAW-20`, `SMX-01` a `SMX-20` i `ASIX-01` a `ASIX-20`).
+    * Elaboreu i carregueu un fitxer amb els 60 números de sèrie (`DAW-01` a `DAW-20`, `SMX-01` a `SMX-20` i `ASIX-01` a `ASIX-20`). Aixó ho podeu fer creant un únic producte i exportant-lo a fitxer. Editar el fitxer afegint elements i tornant-lo a importar.
 3.  **Estoc de Recanvis:**
     * Doneu d'alta 5 unitats dels següents productes (Tipus Goods): `Memòria RAM 8GB`, `Disc SSD 500GB`, `Teclat USB`, `Font d'Alimentació 500W`.
 
