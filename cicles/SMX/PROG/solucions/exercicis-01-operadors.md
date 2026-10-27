@@ -24,6 +24,28 @@ El que ha de fer es el següent:
 >  Total a pagar: 220€
 >  ```
 
+### Pseudocodi (PSeInt)
+``` pseint
+Algoritmo calcupropina
+	//Pedimos el importe inicial
+	Escribir "Introduzca el importe: "
+	Leer cantidad
+	
+	//Pedimos el porcentaje de propina
+	Escribir "Introduzca el % de la propina: "
+	Leer porcentaje
+	
+	//Calculamos la propina
+	propina = (cantidad * porcentaje) / 100
+	
+	//Imprimimos el resultado con el formato que nos piden en el ejercicio
+	Escribir "Importe inicial: ", cantidad, " euros"
+	Escribir "Propina (", porcentaje, "%): ", propina, " euros"
+	Escribir "--------------------------------------"
+	Escribir "Total a pagar: ", cantidad + propina, " euros"
+FinAlgoritmo
+```
+
 ### Solució 1
 
 ```python
@@ -76,6 +98,53 @@ El NPC que la gestiona ens ha demanat un programa que:
   Stock al final del dia: 250 pocions
   ```
 
+### Pseudocodi (PSeInt)
+```pseint
+Algoritmo botiga_pocions
+	//Demanem stock inicial
+	Escribir "Stock inicial: "
+	Leer stock_inicial
+	
+	//Demanem la compra 1
+	Escribir "Unitats a comprar: "
+	Leer compra1
+	
+	stock_restant = stock_inicial - compra1
+	Escribir "Queden ", stock_restant, " pocions"
+	
+	//Demanem la compra 2
+	Escribir "Unitats a comprar: "
+	Leer compra2
+	
+	stock_restant = stock_restant - compra2
+	Escribir "Queden ", stock_restant, " pocions"
+	
+	//Demanem la compra 2
+	Escribir "Unitats a comprar: "
+	Leer compra3
+	
+	stock_restant = stock_restant - compra3
+	Escribir "Queden ", stock_restant, " pocions"
+	
+	//Mostrar resum
+	//Stock inicial: 300
+	//------------------------
+	//Compra client 1: -30
+	//Compra client 2: -5
+	//Compra client 3: -15
+	//------------------------
+	//Stock al final del dia: 250 pocions
+	
+	Escribir "Stock inicial: ", stock_inicial
+	Escribir "---------------------------------"
+	Escribir "Compra client 1: ",  0-compra1
+	Escribir "Compra client 2: -",  compra2
+	Escribir "Compra client 3: ", "-", compra3
+	Escribir "---------------------------------"
+	Escribir "Stock disponible al final del dia: ", stock_restant, " pocions"	
+FinAlgoritmo
+```
+
 ### Solució
 
 ```python
@@ -113,6 +182,29 @@ Necessitem que el programa faci el següent:
   ```shell
   La nostra aeronau ha viatjat durant 120 minuts a 100 nusos, de manera que ha recorregut 370,4 Km
   ```
+
+### Pseudocodi (PSeInt)
+```pseint
+Algoritmo aviacio
+	Escribir "Velocitat (en nusos): "
+	Leer velocitat_nusos
+	
+	Escribir "Temps (en minuts): "
+	Leer temps_minuts
+	
+	// 1 nus = 1 milla nàutica per hora
+	// 1 milla nàutica = 1852m = 1,852 Km
+	velocitat_kmh = velocitat_nusos * 1.852
+	
+	//Si multiplico el temps de vol per la velocitat en Km/h, obtindré els Km recorreguts
+	distancia_recorreguda_km = velocitat_kmh * (temps_minuts / 60)
+	
+	//Si multiplico el temps de vol per la velocitat en nusos, obtindré les milles nàutiques recorregudes
+	distancia_recorreguda_milles_nautiques = velocitat_nusos * (temps_minuts / 60)
+	
+	Escribir "La nostra aeronau ha viatjat durant ", temps_minuts, " minuts a ", velocitat_nusos, " nusos, de manera que ha recorregut ", distancia_recorreguda_km, " Km"			
+FinAlgoritmo
+```
 
 ### Solució
 
