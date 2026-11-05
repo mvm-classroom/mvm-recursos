@@ -63,12 +63,12 @@ Día de la setmana: 5
 Traducció: Divendres
 ```
 
-### v1
-El programa demana el dia de la setmana en un número enter i el tradueix al seu equivalent en text:
+### v2
+El programa demana el dia de la setmana en una cadena de text i el tradueix al seu equivalent numéric:
 
 ```shell
-Día de la setmana: 5
-Traducció: Divendres
+Día de la setmana: Diumenge
+Traducció: 7
 ```
 
 ### versió final v3
