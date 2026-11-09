@@ -523,7 +523,7 @@ indicant-nos que, efectivament, estem treballant sobre la base de dades que acab
 #### Taula `DEPARTAMENT`
 ```sql
 CREATE TABLE DEPARTAMENT (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nom VARCHAR(100) NOT NULL    
 );
 
@@ -532,7 +532,7 @@ COMMENT ON TABLE DEPARTAMENT IS 'Taula per enregistrar els DEPARTAMENTS';
 #### Taula `EMPLEAT`
 ```sql
 CREATE TABLE EMPLEAT(
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     cognom VARCHAR(50) NOT NULL,
     departament_id INTEGER NOT NULL
@@ -545,7 +545,7 @@ COMMENT ON COLUMN EMPLEAT.departament_id IS 'Identificador del departament assoc
 #### Taula `CLIENT`
 ```sql
 CREATE TABLE CLIENT (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nom_empresa VARCHAR(200) NOT NULL,
     empleat_venedor_id INTEGER NOT NULL
 );
