@@ -161,13 +161,13 @@ El podem entendre com: ***Fes servir una seqüència interna complint l'estànda
 
 | Característica | SERIAL (Mètode Antic) | GENERATED ... AS IDENTITY (Mètode Modern) |
 | :--- | :--- | :--- |
-| **Estandardització** | ❌ **No Estàndard.** És una invenció específica de PostgreSQL. Altres bases de dades no ho entenen. | ✅ **Estàndard SQL.** Compleix la normativa ISO SQL:2003. Facilita la portabilitat. |
+| **Estandardització** | **No Estàndard.** És una invenció específica de PostgreSQL. Altres bases de dades no ho entenen. | **Estàndard SQL.** Compleix la normativa ISO SQL:2003. Facilita la portabilitat. |
 | **Naturalesa** | És un **"pseudo-tipus"** (una drecera o macro) que crea una seqüència per darrere. | És una **propietat de la columna**. La base de dades gestiona la identitat nativament. |
-| **Gestió de Permisos** | ⚠️ **Manual.** Si dones permís d'escriptura a la taula, sovint has de donar permís explícit a la seqüència també. | ✅ **Automàtica.** Els permisos sobre la seqüència estan lligats als de la taula. |
-| **Control d'Inserció Manual** | 🔓 **Permissiu.** Sempre permet inserir un ID manualment, cosa que pot desincronitzar la seqüència. | 🔒 **Configurable.** Pots triar `BY DEFAULT` (permissiu) o `ALWAYS` (estricte: bloqueja insercions manuals). |
+| **Gestió de Permisos** | **Manual.** Si dones permís d'escriptura a la taula, sovint has de donar permís explícit a la seqüència també. | **Automàtica.** Els permisos sobre la seqüència estan lligats als de la taula. |
+| **Control d'Inserció Manual** | **Permissiu.** Sempre permet inserir un ID manualment, cosa que pot desincronitzar la seqüència. | **Configurable.** Pots triar `BY DEFAULT` (permissiu) o `ALWAYS` (estricte: bloqueja insercions manuals). |
 | **Dependència** | La columna depèn de la seqüència. Si esborres la columna malament, la seqüència pot quedar "òrfena". | La seqüència és un atribut intern de la columna. Si esborres la columna, tot desapareix netament. |
-| **Rendiment** | ⚡ Molt ràpid (fa servir seqüències). | ⚡ Igual de ràpid (també fa servir seqüències internament). |
-| **Recomanació (PostgreSQL 10+)** | 📉 **Obsolet.** Es manté per compatibilitat amb codi antic. | 📈 **Recomanat.** És la manera correcta de treballar avui dia. |
+| **Rendiment** | Molt ràpid (fa servir seqüències). | Igual de ràpid (també fa servir seqüències internament). |
+| **Recomanació (PostgreSQL 10+)** | **Obsolet.** Es manté per compatibilitat amb codi antic. | **Recomanat.** És la manera correcta de treballar avui dia. |
 
 ## DDL - *Data Definition Language*
 Es un llenguatge que, fent servir certes sentències SQL, ens permet **definir** l'estructura de les dades. Dit d'una altra manera, son les instruccions que farem servir per construir l'estructura de la nostra base de dades.
@@ -179,6 +179,8 @@ Consta de 4 ordres:
 - `TRUNCATE`: Ens permet eliminar tot el contingut de la taula pero mantenint l'estructura
     >[!NOTE]
     >El que fa realment `TRUNCATE` es eliminar la taula (`DROP`) i tornar-la a crear (`CREATE`) tot en una i sense que ho haguem de fer nosaltres explícitament. Es per aixó que aquesta operació la classifiquem com `DDL` i no com `DML`. Sempre que volguem esborrar **TOTS** els registres de la taula, es una opció més recomanable a efectes de rendiment que fer un `DELETE FROM nom_taula`.
+    
+A continuació teniu alguns exemples de sentències DDL que podem fer servir:
 
 ### Definició de la propia base de dades
 #### Crear la base de dades
