@@ -177,8 +177,9 @@ Consta de 4 ordres:
 - `ALTER`: Ens permet alterar o modificar l'estructura, com per exemple, **afegir columnes** a una taula o **canviar el tipus de dada d'una columna**
 - `DROP`: Ens permet eliminar una part de l'estructura. Podem eliminar una **columna**, una **taula** o **tota la base de dades** si cal
 - `TRUNCATE`: Ens permet eliminar tot el contingut de la taula pero mantenint l'estructura
-    >[!NOTE]
-    >El que fa realment `TRUNCATE` es eliminar la taula (`DROP`) i tornar-la a crear (`CREATE`) tot en una i sense que ho haguem de fer nosaltres explícitament. Es per aixó que aquesta operació la classifiquem com `DDL` i no com `DML`. Sempre que volguem esborrar **TOTS** els registres de la taula, es una opció més recomanable a efectes de rendiment que fer un `DELETE FROM nom_taula`.
+  
+>[!NOTE]
+>El que fa realment `TRUNCATE` es eliminar la taula (`DROP`) i tornar-la a crear (`CREATE`) tot en una i sense que ho haguem de fer nosaltres explícitament. Es per aixó que aquesta operació la classifiquem com `DDL` i no com `DML`. Sempre que volguem esborrar **TOTS** els registres de la taula, es una opció més recomanable a efectes de rendiment que fer un `DELETE FROM nom_taula`.
     
 A continuació teniu alguns exemples de sentències DDL que podem fer servir:
 
