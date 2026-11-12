@@ -18,6 +18,55 @@ psql -h ip.de.equip.servidor -U postgres
 >[!NOTE]
 >En aquest cas estem fent servir sempre l'usuari `postgres` per defecte, pero tingueu en compte que `-u` i `-U` precedeixen el nom d'usuari
 
+>[!CAUTION]
+>Si has intentat connectar des del client i et trobes erros de connexió o connexió refusada, aquí tens un parell de correccións:
+
+>[!TIP]
+>Per que el nostre servei escolti peticions remotes, ho heu d'habilitar amb l'opció `listen_addresses` al fitxer `/etc/postgresql/18/main/postgresql.conf`
+>
+>L'opció la trobarem comentada amb el valor per defecte
+>``` ini
+>#listen_addresses = 'localhost'
+>```
+>
+>Aixó vol dir que només està escoltant 'localhost' i que no podrem rebre cap petició remota
+>
+>Podem canviar-ho descomentant la línia i indicant les adreces que volem escoltar, si volem escoltar totes farem servir un `*`
+>```ini
+>listen_addresses = '*'
+>```
+
+
+>[!WARNING]
+>Pero amb aixó no serà suficient, hem de tocar un altre fitxer
+
+>[!TIP]
+>Encara que el servei **escolta** adreces remotes, falta afinar una mica més la seguretat.
+>Podem indicar quin tipus d'autenticació fem servir segons el métode de connexió, l'usuari, la base de dades, l'adreça remota...
+>Tot aixó ho podem definir al fitxer `/etc/postgresql/18/main/pg_hba.conf`
+>
+>
+>Per exemple, una manera molt insegura pero que ens podem permetre en aquest entorn de proves seria afegir:
+>
+>```c
+># Permetre connexions des de qualsevol IPv4 remota (no recomanable a producció)
+>host    all             all             0.0.0.0/0               scram-sha-256
+>
+># Permetre connexions des de qualsevol IPv6 remota (no recomanable a producció)
+>host    all             all             ::/0                    scram-sha-256
+>```
+>
+
+>[!TIP]
+>Reiniciem i comprovem l'status
+>```shell
+>sudo systemctl restart postgresql
+>
+>systemctl status postgresql
+>```
+>
+>Ara ja hauriem de poder connectar sense cap problema.
+
 ## Algunes comandes d'utilitat a `psql`
 
 |Comanda|Descripció|
