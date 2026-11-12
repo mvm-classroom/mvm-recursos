@@ -596,13 +596,13 @@ COMMENT ON COLUMN LINIA_COMANDA.Id_Producte IS 'FK a Producte';
 #### Referència de la taula `EMPLEAT` cap a `DEPARTAMENT`
 Afegim una **clau forana** per establir una relació entre la taula `EMPLEAT` i la taula `DEPARTAMENT`. En aquest cas, la relació la fem entre el camp `Id_Departament` de la taula `EMPLEAT` y el camp `Id` de la taula `DEPARTAMENT`.
 ```sql
-ALTER TABLE EMPLEAT ADD FOREIGN KEY (Id_Departament) REFERENCES DEPARTAMENT (Id);
+ALTER TABLE EMPLEAT ADD FOREIGN KEY (departament_id) REFERENCES DEPARTAMENT (id);
 ```
 
 #### Referència de la taula `CLIENT` cap a `EMPLEAT`
 Afegim una **clau forana** per establir una relació entre la taula `CLIENT` i la taula `EMPLEAT`. En aquest cas, la relació la fem entre el camp `Id_Venedor` de la taula `CLIENT` y el camp `Id` de la taula `EMPLEAT`.
 ```sql
-ALTER TABLE CLIENT ADD FOREIGN KEY (Id_Venedor) REFERENCES EMPLEAT (Id);
+ALTER TABLE CLIENT ADD FOREIGN KEY (empleat_venedor_id) REFERENCES EMPLEAT (Id);
 ```
 
 #### Referència de la taula `COMANDA` cap a `CLIENT`
